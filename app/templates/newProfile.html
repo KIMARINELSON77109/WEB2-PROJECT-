@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div>
+    <h2> ADD PROFILE </h2>
+</div>
+{% include "flash_messages.html" %}
+<form class="" action="{{ url_for('profile') }}" method="POST" enctype="multipart/form-data">
+  
+  {{ form.csrf_token }}
+  
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="form-group">
+                {{ form.FirstName.label }}
+                {{ form.FirstName(class='form-control') }}
+              </div>
+          </div>
+      </div>
+  </div>
+    
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+            <div class="form-group">
+               {{ form.LastName.label }}
+               {{ form.LastName(class='form-control') }}
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+              {{form.gender.label}}
+              {{form.gender(class="form-control",id="form_Email")}}
+          </div>
+      </div>
+  </div>
+  <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              {{form.Email.label}}
+              {{form.Email(class="form-control",id="form_Email")}}
+            </div>
+        </div>
+   </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{form.Location.label}}
+                    {{form.Location(class="form-control",id="form_Location")}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{form.Biography.label}}
+                    {{form.Biography(class="form-control",id="form_Biography")}}
+                </div>
+            </div>
+        </div>
+  <div class="row">
+     <div class="col-md-6">
+         <div class="form-group">
+           <div class="form-group">
+                 <label for="photo">Profile Picture</label><br/>
+                 {{form.photo(class="form-control")}}
+           </div>
+         </div>
+     </div>
+ </div> 
+  
+  <button type="submit" name="submit" class="btn btn-primary">Add Profile</button>
+</form>
+{%endblock%}

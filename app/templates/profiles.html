@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} All Profiles {% endblock %}
+{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> {% endblock %}
+
+{% block main %}
+
+<h1 class="page-header">All Profiles</h1>
+
+    {% for user in users %}
+    
+        <div class="row">
+    
+            <div class="pro_pic">
+    
+                <img class = "profilePic" src="{{ url_for('static', filename='uploads/'+user.photo) }}"></img>
+    
+            </div>
+    
+            <div class="col pro-data">
+    
+                <h3><span class="bold">{{ user.FirstName}} {{ user.LastName }}</span></h3>
+    
+                <p><span class = "bold"></span> {{ user.gender }} </p>
+    
+                <p><span class = "glyphicon glyphicon-map-marker"></span> {{ user.Location}} </p>
+                
+            </div>
+            
+        </div>
+        
+    {% endfor %}
+    
+{% endblock %}
