@@ -1,34 +1,26 @@
 {% extends 'base.html' %}
+{% block css %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
 
 {% block title %} All Profiles {% endblock %}
-{% block css %} <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> {% endblock %}
 
 {% block main %}
-
-<h1 class="page-header">All Profiles</h1>
-
-    {% for user in users %}
-    
-        <div class="row">
-    
-            <div class="pro_pic">
-    
-                <img class = "profilePic" src="{{ url_for('static', filename='uploads/'+user.photo) }}"></img>
-    
+    <h1 class="title">All Profiles</h1>
+        {% for user in users %}
+            <div class="row border-style center profile profiles-containe">
+                <image src="{{ url_for('static', filename='uploads/'+user.photo) }}" class="pro_pic">
+                    <div class="col pro-data">
+                        <span class="">{{ user.FirstName }} {{ user.LastName }}</span>
+                        <span class="blk"><i class="fa fa-street-view"></i>  {{ user.gender }}</span>
+                        <span class="blk"><i class="fa fa-map-marker"></i>  {{ user.Location }}</span>
+                    </div>
+                <div class="view-profile center col bio">
+                    </br>
+                    <a class="view-btn btn-success" href="{{ url_for('viewProfile', userid=user['user_ID']) }}">View profile</a>
+                </div>
             </div>
-    
-            <div class="col pro-data">
-    
-                <h3><span class="bold">{{ user.FirstName}} {{ user.LastName }}</span></h3>
-    
-                <p><span class = "bold"></span> {{ user.gender }} </p>
-    
-                <p><span class = "glyphicon glyphicon-map-marker"></span> {{ user.Location}} </p>
-                
-            </div>
-            
-        </div>
-        
-    {% endfor %}
-    
+        {% endfor %}
 {% endblock %}

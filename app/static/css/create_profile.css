@@ -1,0 +1,22 @@
+body 
+{
+    padding-top: 5rem;
+    background-color: #e0f2fb;
+    padding-right: 25%;
+    padding-left: 25%;
+    
+}
+
+.layout
+{
+    padding-top: 30px;
+    padding-bottom:30px;
+    background-color: white;
+    border-radius: 5px;
+    border-top-color: #0080ff;
+}
+
+form
+{
+    padding-left: 10%;
+}

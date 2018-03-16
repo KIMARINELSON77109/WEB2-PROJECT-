@@ -1,47 +1,60 @@
-.pro_img{
-
-    width:140px;
-
-    height: 80px;
-
-    margin-top: 5px
-
+body 
+{
+    padding-top: 5rem;
+    background-color: #e0f2fb;
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
-.card{
+.profilePic
+{
+    height: 150px;
+    width: 150px;
+}
+.profile-userbuttons .btn 
+{
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+  width: 47%;
+}
 
-    width: 25rem;
+.profile-userbuttons .btn:last-child
+{
+  margin-right: 0px;
+}
 
+.layout
+{
+    padding-top: 30px;
+    padding-bottom:30px;
+    background-color: white;
+    border-radius: 5px;
+    border-top-color: #0080ff;
+}
+
+p
+{
+    text-align: left;
+    font-family: "Verdana", Sans-serif;
+    color: grey;
 }
 
 
-
-.center{
-
-    margin: 0 auto;
-
+.border-style
+{
+    border-radius: 3px;
+    border-top: 3px #007bff solid;
 }
 
-
-
-.btn{
-
-    width:47%;
-
+.pos_title
+{
+  padding-left: 75px;
 }
 
-
-
-.inline{
-
-    display: inline;
-
-}
-
-
-
-.btn-container{
-
-    text-align: center;
-
+.bio
+{
+    padding-top: 25px;
 }

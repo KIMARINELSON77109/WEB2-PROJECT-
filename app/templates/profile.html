@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block css %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
+
+
+{% block main %}
+<div class = "layout border-style">
+	<div class="modal-dialog">
+		<div class="span4 well">
+            <div class="row">
+        		    <img class = "profilePic"src="{{ url_for('static', filename='uploads/'+user.photo) }}"/>
+        		<div class="col pos_title">
+                  	<span id="name"><strong>{{user.FirstName}} {{user.LastName}}</strong></span>
+                  	<p><i class="fa fa-envelope-o"></i> {{user.Email}}</p>
+                  	<p><i class="fa fa-map-marker"></i> {{user.Location}}</p>
+             		<p><i class="fa fa-calendar-o"></i> Joined on {{user.created_on.strftime("%B %d, %Y")}}</p>
+             		
+        		</div>
+        	</div>
+        	<div class="bio">
+                    <p class="text-left"><strong>About Me: </strong></p>
+                    <p>{{user.Biography}}</p>
+        	</div>
+        	<div class="profile-userbuttons">
+        	    <center>
+					<button type="button" class="btn btn-success btn-sm">Send messaage</button>
+					<button type="button" class="btn btn-primary btn-sm">follow</button>
+				</center>
+			</div>
+	</div>
+</div>
+{% endblock %}

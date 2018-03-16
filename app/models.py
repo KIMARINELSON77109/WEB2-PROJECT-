@@ -9,9 +9,9 @@ class UserProfile(db.Model):
     gender = db.Column(db.String(10), nullable=False)
     Email = db.Column(db.String(80), unique=True, nullable=False)
     Location = db.Column(db.String(255), nullable=False)
-    Biography = db.Column(db.String(255), nullable=False)
+    Biography = db.Column(db.Text, nullable=False)
     photo = db.Column(db.String(80), nullable=False)
-    created_on = db.Column(db.String(20),nullable=False)
+    created_on = db.Column(db.DateTime,nullable=False)
     
     __tablename__ = "UserProfile"
     

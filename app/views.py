@@ -63,13 +63,13 @@ def profile():
         return redirect(url_for("profile"))
     print U_form.errors.items()
 
-    return render_template('newProfile.html',  form = U_form)
+    return render_template('createProfile.html',  form = U_form)
     
 
 @app.route('/profiles',methods=['POST','GET'])
 def profiles():
     user_list = UserProfile.query.all()
-    users = [{"FirstName": user.FirstName, "LastName": user.LastName, "gender": user.gender, "Location": user.Location} for user in user_list]
+    users = [{"user_ID":user.user_ID,"FirstName": user.FirstName, "LastName": user.LastName, "gender": user.gender, "Location": user.Location} for user in user_list]
     
     if request.method == 'GET':
         if user_list is not None:
@@ -77,6 +77,16 @@ def profiles():
         else:
             flash('No Users Found', 'danger')
             return redirect(url_for("home"))
+
+@app.route('/profiles/<userid>', methods=['POST', 'GET'])
+def viewProfile(userid):
+    user = UserProfile.query.filter_by(user_ID=userid).first()
+    if user is not None:
+        return render_template('profile.html',user=user)
+    else:
+        flash('Unable to view user profile', 'danger')
+        return redirect(url_for('profile'))
+    
     
 ###
 # The functions below should be applicable to all Flask apps.
