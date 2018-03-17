@@ -1,19 +1,12 @@
 {% extends 'base.html' %}
-{% block css %}
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-{% endblock %}
-
-{% block title %} All Profiles {% endblock %}
 
 {% block main %}
-    <h1 class="title">All Profiles</h1>
+    <h1 class="title"><strong>Profiles</strong></h1>
         {% for user in users %}
             <div class="row border-style center profile profiles-containe">
                 <image src="{{ url_for('static', filename='uploads/'+user.photo) }}" class="pro_pic">
                     <div class="col pro-data">
-                        <span class="">{{ user.FirstName }} {{ user.LastName }}</span>
+                        <span class="name">{{ user.FirstName }} {{ user.LastName }}</span>
                         <span class="blk"><i class="fa fa-street-view"></i>  {{ user.gender }}</span>
                         <span class="blk"><i class="fa fa-map-marker"></i>  {{ user.Location }}</span>
                     </div>

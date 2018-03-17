@@ -33,6 +33,7 @@ body
     background-color: white;
     border-radius: 5px;
     border-top-color: #0080ff;
+    box-shadow: 0px 2px 8px grey;
 }
 
 p
@@ -42,6 +43,15 @@ p
     color: grey;
 }
 
+h1
+{
+    margin: 0 auto;
+    width: 45%;
+    margin-bottom: 1%;
+    font-weight: bold;
+    text-align: left;
+    
+}
 
 .border-style
 {

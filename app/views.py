@@ -32,35 +32,38 @@ def about():
 def profile():
     # Instantiate your form class
     U_form = ProfileForm()
-    if request.method == 'POST' and U_form.validate_on_submit():
-        # collection of data from the form
-        FirstName = U_form.FirstName.data
-        LastName = U_form.LastName.data
-        gender = U_form.gender.data
-        Email = U_form.Email.data
-        Location = U_form.Location.data
-        Biography = U_form.Biography.data
-        dateCreated = str(datetime.date.today())
+    if request.method == 'POST':
+        if U_form.validate_on_submit():
+            # collection of data from the form
+            FirstName = U_form.FirstName.data
+            LastName = U_form.LastName.data
+            gender = U_form.gender.data
+            Email = U_form.Email.data
+            Location = U_form.Location.data
+            Biography = U_form.Biography.data
+            dateCreated = str(datetime.date.today())
+        
+            
+            # Get file data and save to your uploads folder
+            file = request.files['photo']
+            imagename = secure_filename(file.filename)
+            
+            # Validate file upload on submit
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], imagename))
+            
+            # Genertating a unquie user id
+            user_ID = str(uuid.uuid3(uuid.NAMESPACE_DNS, str(FirstName)))
+        
+            # save data to database
+            addUser = UserProfile(user_ID,FirstName,LastName,gender,Email,Location,Biography,imagename, dateCreated)
+            
+            db.session.add(addUser)
+            db.session.commit()
     
-        
-        # Get file data and save to your uploads folder
-        file = request.files['photo']
-        imagename = secure_filename(file.filename)
-        
-        # Validate file upload on submit
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], imagename))
-        
-        # Genertating a unquie user id
-        user_ID = str(uuid.uuid3(uuid.NAMESPACE_DNS, str(FirstName)))
-    
-        # save data to database
-        addUser = UserProfile(user_ID,FirstName,LastName,gender,Email,Location,Biography,imagename, dateCreated)
-        
-        db.session.add(addUser)
-        db.session.commit()
-
-        flash("Profile Successfully Created", "success")
-        return redirect(url_for("profile"))
+            flash("Profile Successfully Created", "success")
+            return redirect(url_for("profile"))
+            
+        flash_errors(U_form)
     print U_form.errors.items()
 
     return render_template('createProfile.html',  form = U_form)
@@ -86,8 +89,6 @@ def viewProfile(userid):
     else:
         flash('Unable to view user profile', 'danger')
         return redirect(url_for('profile'))
-    
-    
 ###
 # The functions below should be applicable to all Flask apps.
 ###
