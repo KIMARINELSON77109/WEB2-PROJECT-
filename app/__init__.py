@@ -1,8 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from subprocess import call
-
-call(["sudo","service", "postgresql", "start"])
 
 
 # SECRET_KEY is needed for session security, the flash() method in this case stores the message in a session
