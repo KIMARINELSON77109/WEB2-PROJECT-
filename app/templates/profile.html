@@ -13,7 +13,7 @@
             <div class="row">
         		    <img class = "profilePic"src="{{ url_for('static', filename='uploads/'+user.photo) }}"/>
         		<div class="col pos_title">
-                  	<span class="name"><strong>{{user.FirstName}} {{user.LastName}}</strong></span>
+                  	<h2><strong>{{user.FirstName}} {{user.LastName}}</strong></h2>
                   	<p><i class="fa fa-envelope-o"></i> {{user.Email}}</p>
                   	<p><i class="fa fa-map-marker"></i> {{user.Location}}</p>
              		<p><i class="fa fa-calendar-o"></i> Joined on {{user.created_on.strftime("%B %d, %Y")}}</p>
